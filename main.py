@@ -12,7 +12,7 @@ from astrbot.core.message.components import At
 
 
 @register(
-    "astrbot_dg_lab_ultra_plugin", "RC-CHN & NanoRocky", "郊狼API控制插件", "3.1.0"
+    "astrbot_dg_lab_ultra_plugin", "RC-CHN & NanoRocky", "郊狼API控制插件", "3.1.1"
 )
 class MyPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
@@ -647,6 +647,7 @@ class MyPlugin(Star):
             /郊狼授权 群聊 <群号> (切换特定群聊授权)
             /郊狼授权 群聊开关 (全局启用或禁用群聊功能)
         """
+        event.stop_event()
         if not event.is_private_chat():
             return
 
@@ -724,6 +725,7 @@ class MyPlugin(Star):
         """修改郊狼控制目标的 client_id。仅受控者本人或管理员可用。
         用法: /郊狼客户端 <新的client_id>
         """
+        event.stop_event()
         if not event.is_private_chat():
             return
 
@@ -776,6 +778,7 @@ class MyPlugin(Star):
         【修改】 /郊狼指令 修改 B通道开关/B通道倍数/开火限制/开火波形 <参数>
         【操作】 /郊狼指令 开火 <强度> [时间毫秒]
         """
+        event.stop_event()
         if not event.is_private_chat():
             if not self.allow_group_chat:
                 return
